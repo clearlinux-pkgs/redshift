@@ -1,0 +1,4 @@
+1.12
+pkgconfig(gtk+-3.0)
+pkgconfig(systemd)
+systemd-dev
