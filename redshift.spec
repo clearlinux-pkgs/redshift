@@ -4,7 +4,7 @@
 #
 Name     : redshift
 Version  : 1.12
-Release  : 1
+Release  : 2
 URL      : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Source0  : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Summary  : No detailed summary available
@@ -18,6 +18,7 @@ Requires: redshift-man = %{version}-%{release}
 Requires: redshift-python = %{version}-%{release}
 Requires: redshift-python3 = %{version}-%{release}
 Requires: redshift-services = %{version}-%{release}
+Requires: pygobject
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : perl(XML::Parser)
@@ -31,6 +32,7 @@ BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xcb)
 BuildRequires : pkgconfig(xcb-randr)
 BuildRequires : pkgconfig(xxf86vm)
+BuildRequires : pygobject
 BuildRequires : systemd-dev
 
 %description
@@ -116,21 +118,25 @@ services components for the redshift package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557245598
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562958222
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1557245598
+export SOURCE_DATE_EPOCH=1562958222
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/redshift
 cp COPYING %{buildroot}/usr/share/package-licenses/redshift/COPYING
