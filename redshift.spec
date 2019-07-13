@@ -4,7 +4,7 @@
 #
 Name     : redshift
 Version  : 1.12
-Release  : 2
+Release  : 3
 URL      : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Source0  : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Summary  : No detailed summary available
