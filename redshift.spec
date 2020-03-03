@@ -4,10 +4,10 @@
 #
 Name     : redshift
 Version  : 1.12
-Release  : 5
+Release  : 6
 URL      : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Source0  : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
-Summary  : No detailed summary available
+Summary  : Adjusts the color temperature of your screen according to your surroundings.
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: redshift-bin = %{version}-%{release}
@@ -113,13 +113,15 @@ services components for the redshift package.
 
 %prep
 %setup -q -n redshift-1.12
+cd %{_builddir}/redshift-1.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562958222
+export SOURCE_DATE_EPOCH=1583218667
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -136,10 +138,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1562958222
+export SOURCE_DATE_EPOCH=1583218667
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/redshift
-cp COPYING %{buildroot}/usr/share/package-licenses/redshift/COPYING
+cp %{_builddir}/redshift-1.12/COPYING %{buildroot}/usr/share/package-licenses/redshift/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang redshift
 
@@ -162,7 +164,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/redshift/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/redshift/COPYING
+/usr/share/package-licenses/redshift/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files man
 %defattr(0644,root,root,0755)

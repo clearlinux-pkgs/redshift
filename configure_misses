@@ -1,3 +1,4 @@
+Configure miss: windres
 Configure miss: whether Objective C compiler works
 Configure miss: ApplicationServices/ApplicationServices.h usability
 Configure miss: ApplicationServices/ApplicationServices.h presence
