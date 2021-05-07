@@ -4,7 +4,7 @@
 #
 Name     : redshift
 Version  : 1.12
-Release  : 13
+Release  : 14
 URL      : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Source0  : https://github.com/jonls/redshift/releases/download/v1.12/redshift-1.12.tar.xz
 Summary  : Adjusts the color temperature of your screen according to your surroundings.
